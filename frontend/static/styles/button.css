@@ -1,0 +1,16 @@
+/* Riverborn brand colors: Forest #0D2B22, Deep Forest #1A4435, Midnight #060F0C, Lime #D4F53C */
+.btn-primary {
+  background: linear-gradient(180deg, #1a4435 0%, #0d2b22 100%);
+  transition: 0.3s;
+}
+.btn-primary:hover {
+  background: linear-gradient(180deg, #0d2b22 0%, #060f0c 100%);
+}
+
+.btn-secondary {
+  background: linear-gradient(180deg, #f76464 0%, #c74444 100%);
+  transition: 0.3s;
+}
+.btn-secondary:hover {
+  background: linear-gradient(180deg, #ab5858 0%, #e14747 100%);
+}

@@ -1,0 +1,83 @@
+// DataSource and Generator configurations
+datasource db {
+  provider = "mongodb" // clarified that the provider is MongoDB
+  url      = env("DATABASE_URL") // ensuring the database URL is pulled from environment variables
+}
+
+generator client {
+  provider = "prisma-client-js" // generating the Prisma client suitable for JavaScript
+}
+
+// Quiz model
+model Quiz {
+  id                  String     @id @default(auto()) @map("_id") @db.ObjectId
+  uid                 String     @unique
+  type                String
+  time                Int?
+  difficulty          String
+  questionNumber      Int
+  negativeMark        Float?
+  isPublic            Boolean    @default(false)
+  optionsCount        Int
+  perQuesMarks        Int?
+  title               String
+  requirements        String[]
+  text                String
+  resultType          String
+  isDeleted           Boolean   @default(false)
+  userId              String // opaque owner reference — no auth/identity system is enforced by the core engine itself
+  results             Result[]
+  createdAt           Int?
+  updatedAt           Int?
+  questions           Questions[]
+}
+
+type Questions{
+  id        Int    
+  question  String
+  answers   String[]
+  options   String[]
+}
+
+// Result model
+model Result {
+  id                    String   @id @default(auto()) @map("_id") @db.ObjectId
+  uid                   String   @unique
+  isDeleted             Boolean  @default(false)
+  finalScore            Float?
+  subScore              Float?
+  negativeScore         Float?
+  negativeMark          Float?
+  timeTaken             Int?
+  title                 String
+  time                  Int?
+  questions             Answered[]
+  participant           Json
+  totalMarks            Float?
+  perQuesMarks          Float?
+  participantId         String
+  userId                String
+  quiz                  Quiz     @relation(fields: [quizId], references: [uid])
+  quizId                String
+  isCompleted           Boolean  @default(false)
+  createdAt             Int?
+  updatedAt             Int?
+}
+model Participant{
+  id             String     @id @default(auto()) @map("_id")  @db.ObjectId
+  uid            String     @unique
+  identifier     String     @unique
+  name           String?
+  roll           Int?
+  department     String?
+  session        String?
+  address        String?
+}
+
+type Answered{
+  id               Int      
+  question         String
+  answers          String[]
+  options          String[]
+  selectedOptions  String[]
+}

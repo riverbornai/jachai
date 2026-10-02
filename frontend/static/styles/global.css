@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+html {
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
+}
+
+.custom-bg-color {
+    background-image: url("/static/bg.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* Riverborn brand colors: Forest #0D2B22, Lime #D4F53C, Deep Forest #1A4435, River Mist #9FCEBE */
+.boujee-text {
+    --bg-size: 400%;
+    --color-one: #0d2b22;
+    --color-two: #d4f53c;
+    background: linear-gradient(90deg,
+            var(--color-one),
+            var(--color-two),
+            var(--color-one)) 0 0 / 400% 100%;
+    color: transparent;
+    background-clip: text;
+}
+
+.purple-text {
+    --color-one: #1a4435;
+    --color-two: #d4f53c;
+    background: linear-gradient(90deg,
+            var(--color-one),
+            var(--color-two),
+            var(--color-one)) 0 0 / 400% 100%;
+    color: transparent;
+    background-clip: text;
+}
+
+.ai-text {
+    --bg-size: 400%;
+    --color-one: #0d2b22;
+    --color-two: #9fcebe;
+    background: linear-gradient(90deg,
+            var(--color-one),
+            var(--color-two),
+            var(--color-one)) 0 0 / 400% 100%;
+    color: transparent;
+    background-clip: text;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .boujee-text {
+        animation: move-bg-boujee 8s linear infinite;
+    }
+
+    .purple-text {
+        animation: move-bg 4s linear infinite;
+    }
+
+    .ai-text {
+        animation: move-bg 14s linear infinite;
+    }
+
+    @keyframes move-bg-boujee {
+        to {
+            background-position: 400% 0;
+        }
+    }
+
+    @keyframes move-bg-purple {
+        to {
+            background-position: 400% 0;
+        }
+    }
+
+    @keyframes move-bg-ai {
+        to {
+            background-position: 400% 0;
+        }
+    }
+}
+
+.glassmorphism {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 6px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
